@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Messages</title>
+</head>
+<body>
+  <h1>Messages</h1>
+  <ul>
+    <% messagesWithUsers.forEach(message => { %>
+      <li>
+        <% if (currentUser && currentUser.membership_status) { %>
+            <strong><%= message.first_name %> <%= message.last_name %>:</strong> 
+        <% } %>
+        <%= message.title %> - <%= message.message %>
+        <br>
+        <% if (currentUser && currentUser.membership_status) { %>
+        <small><%= message.timestamp %></small>
+        <% } %>
+        <% if (currentUser && currentUser.admin) { %>
+            <form action="/delete-message/<%= message.message_id %>" method="POST" style="display:inline;">
+                <button type="submit">Delete</button>
+            </form>
+        <% } %>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>

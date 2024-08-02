@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <% if (currentUser.membership_status) {%>
+    <h1>WELCOME BACK MEMBER <%= currentUser.username %></h1>
+  <% } else { %>
+    <h1>Please enter the membership password</h1>
+    <form action="/membership-status" method="POST">
+      <label for="membershipPasswordAttempt">Membership password</label>
+      <input name="membershipPasswordAttempt" placeholder="password" type="text" />
+      <button>Log In</button>
+    </form>
+  <% } %>
+</body>
+</html>
