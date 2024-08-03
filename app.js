@@ -1,5 +1,4 @@
 /////// app.js
-
 const { Pool } = require("pg");
 const express = require("express");
 const session = require("express-session");
@@ -12,7 +11,14 @@ const moment = require('moment');
 
 const pgSession = require('connect-pg-simple')(session);
 
-const port = process.env.DATABASE_PORT || 3000;
+const port = process.env.PORT || 3000;
+
+const connectionString = process.env.DATABASE_URL;
+/*
+const pool = new Pool({
+    connectionString: connectionString,
+});
+*/
 
 const pool = new Pool({
     user: process.env.DATABASE_USER,
