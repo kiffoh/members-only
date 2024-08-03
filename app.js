@@ -12,12 +12,14 @@ const moment = require('moment');
 
 const pgSession = require('connect-pg-simple')(session);
 
+const port = process.env.DATABASE_PORT || 3000;
+
 const pool = new Pool({
     user: process.env.DATABASE_USER,
     host: process.env.DATABASE_HOST,
     database: process.env.DATABASE_NAME,
     password: process.env.DATABASE_PASSWORD,
-    port: process.env.DATABASE_PORT,
+    port: port,
 });
 
 const app = express();
@@ -245,4 +247,4 @@ app.post("/delete-message/:id", authenticatedUser, asyncHandler(async (req, res,
 }));
 
 
-app.listen(3000, () => console.log("app listening on port 3000!"));
+app.listen(port, () => console.log(`app listening on port ${port}!`));
