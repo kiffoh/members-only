@@ -13,23 +13,25 @@ const pgSession = require('connect-pg-simple')(session);
 
 const port = process.env.PORT || 3000;
 
+/*
 const connectionString = process.env.DATABASE_URL;
+
 
 const pool = new Pool({
     connectionString: connectionString,
 });
 
-/*
 const helmet = require("helmet");
+*/
 
 const pool = new Pool({
-    user: process.env.DATABASE_USER,
-    host: process.env.DATABASE_HOST,
-    database: process.env.DATABASE_NAME,
-    password: process.env.DATABASE_PASSWORD,
-    port: port,
+    user: process.env.PGUSER,
+    host: process.env.PGHOST,
+    database: process.env.PGDATABASE,
+    password: process.env.PGPASSWORD,
+    port: process.env.PGPORT,
 });
-*/
+
 
 const app = express();
 app.set("views", path.join(__dirname, "views"));
