@@ -13,10 +13,10 @@ const pgSession = require('connect-pg-simple')(session);
 
 const port = process.env.PORT || 3000;
 
-/*
+
 const connectionString = process.env.DATABASE_URL;
 
-
+/*
 const pool = new Pool({
     connectionString: connectionString,
 });
@@ -25,11 +25,14 @@ const helmet = require("helmet");
 */
 
 const pool = new Pool({
+  /*
   user: process.env.PGUSER,
   host: process.env.PGHOST,
   database: process.env.PGDATABASE,
   password: process.env.PGPASSWORD,
   port: process.env.PGPORT,
+  */
+  connectionString: connectionString,
   ssl: {
     rejectUnauthorized: true, // Enforces SSL certificate validation
     ca: process.env.PGSSLROOTCERT // Path to the root certificate provided by Adaptable.io
