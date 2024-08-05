@@ -14,16 +14,13 @@ const pgSession = require('connect-pg-simple')(session);
 const port = process.env.PORT || 3000;
 
 const connectionString = process.env.DATABASE_URL;
-/*
+
 const pool = new Pool({
     connectionString: connectionString,
 });
-*/
 
+/*
 const helmet = require("helmet");
-
-
-
 
 const pool = new Pool({
     user: process.env.DATABASE_USER,
@@ -32,11 +29,13 @@ const pool = new Pool({
     password: process.env.DATABASE_PASSWORD,
     port: port,
 });
+*/
 
 const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+/*
 app.use(
   helmet.contentSecurityPolicy({
     useDefaults: true,
@@ -45,6 +44,7 @@ app.use(
     },
   })
 );
+*/
 
 app.use(session({
   store: new pgSession ({
