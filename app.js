@@ -20,6 +20,18 @@ const pool = new Pool({
 });
 */
 
+const helmet = require("helmet");
+
+app.use(
+  helmet.contentSecurityPolicy({
+    useDefaults: true,
+    directives: {
+      "font-src": ["'self'", "data:"],
+    },
+  })
+);
+
+
 const pool = new Pool({
     user: process.env.DATABASE_USER,
     host: process.env.DATABASE_HOST,
