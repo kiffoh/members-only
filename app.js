@@ -22,14 +22,7 @@ const pool = new Pool({
 
 const helmet = require("helmet");
 
-app.use(
-  helmet.contentSecurityPolicy({
-    useDefaults: true,
-    directives: {
-      "font-src": ["'self'", "data:"],
-    },
-  })
-);
+
 
 
 const pool = new Pool({
@@ -43,6 +36,15 @@ const pool = new Pool({
 const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+
+app.use(
+  helmet.contentSecurityPolicy({
+    useDefaults: true,
+    directives: {
+      "font-src": ["'self'", "data:"],
+    },
+  })
+);
 
 app.use(session({
   store: new pgSession ({
