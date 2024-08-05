@@ -25,11 +25,15 @@ const helmet = require("helmet");
 */
 
 const pool = new Pool({
-    user: process.env.PGUSER,
-    host: process.env.PGHOST,
-    database: process.env.PGDATABASE,
-    password: process.env.PGPASSWORD,
-    port: process.env.PGPORT,
+  user: process.env.PGUSER,
+  host: process.env.PGHOST,
+  database: process.env.PGDATABASE,
+  password: process.env.PGPASSWORD,
+  port: process.env.PGPORT,
+  ssl: {
+    rejectUnauthorized: true, // Enforces SSL certificate validation
+    ca: process.env.PGSSLROOTCERT // Path to the root certificate provided by Adaptable.io
+  },
 });
 
 
