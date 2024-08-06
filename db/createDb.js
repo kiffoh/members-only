@@ -22,6 +22,13 @@ CREATE TABLE IF NOT EXISTS messages (
     message TEXT,
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE IF NOT EXISTS session (
+    sid VARCHAR NOT NULL COLLATE "default" PRIMARY KEY,
+    sess JSON NOT NULL,
+    expire TIMESTAMP(6) NOT NULL
+);
+
 `;
 
 async function main() {
