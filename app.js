@@ -8,6 +8,7 @@ const path = require('path');
 require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const moment = require('moment');
+const fs = require('fs');
 
 const pgSession = require('connect-pg-simple')(session);
 
@@ -39,7 +40,7 @@ const pool = new Pool({
   connectionString: connectionString,
   ssl: {
     rejectUnauthorized: true, // Enforces SSL certificate validation
-    ca: process.env.PGSSLROOTCERT // Path to the root certificate provided by Adaptable.io
+    ca: fs.readFileSync(process.env.PGSSLROOTCERT).toString(), // Path to the root certificate provided by Adaptable.io
   },
 });
 
