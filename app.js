@@ -121,7 +121,14 @@ app.use((req, res, next) => {
 
 const schemas = require('./db/createDb');
 
-schemas.main();
+(async () => {
+  try {
+    await schemas.main();
+    console.log('Seeding completed successfully.');
+  } catch (err) {
+    console.error('Error during seeding:', err);
+  }
+})();
 
 // This just shows the new stuff we're adding to the existing contents
 const { body, validationResult } = require("express-validator");
