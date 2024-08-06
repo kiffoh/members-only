@@ -119,6 +119,10 @@ app.use((req, res, next) => {
   next();
 });
 
+const schemas = require('./db/createDb');
+
+schemas.main();
+
 // This just shows the new stuff we're adding to the existing contents
 const { body, validationResult } = require("express-validator");
 const asyncHandler = require("express-async-handler");
