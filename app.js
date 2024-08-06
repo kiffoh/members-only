@@ -11,6 +11,10 @@ const moment = require('moment');
 
 const pgSession = require('connect-pg-simple')(session);
 
+console.log('Database URL:', process.env.DATABASE_URL);
+console.log('SSL CA Path:', process.env.PGSSLROOTCERT);
+
+
 const port = process.env.PORT || 3000;
 
 
