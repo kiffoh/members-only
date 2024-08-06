@@ -60,11 +60,12 @@ app.use(session({
     pool: pool,
     tableName: "session"
   }),
-  secret: process.env.DATABASE_SECRET,
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
   cookie: {maxAge: 30 * 24 * 60 * 60 * 1000}
 }));
+
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
